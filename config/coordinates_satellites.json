@@ -1,0 +1,44 @@
+{
+  "kenobi": {
+    "coordinates": [
+      -500,
+      -200
+    ],
+    "distance": 100,
+    "message": [
+      "este",
+      "",
+      "",
+      "mensaje",
+      ""
+    ]
+  },
+  "skywalker": {
+    "coordinates": [
+      100,
+      -100
+    ],
+    "distance": 112.5,
+    "message": [
+      "",
+      "es",
+      "",
+      "",
+      "secreto"
+    ]
+  },
+  "sato": {
+    "coordinates": [
+      500,
+      100
+    ],
+    "distance": 142.7,
+    "message": [
+      "este",
+      "",
+      "un",
+      "",
+      ""
+    ]
+  }
+}
