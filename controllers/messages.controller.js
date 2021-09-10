@@ -23,7 +23,11 @@ const DecryptMessage = function(){
 const GetMessage = function(messages){
   try{
     if(messages.some((element) => { return element === '' || element === undefined})){
-      return 404
+      const error = {
+        'status':404, 
+        'message': 'The message cannot be decrypted'
+      }
+      throw new Error(JSON.stringify(error))
     } else {
       return messages.join(' ')
     }

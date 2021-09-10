@@ -1,5 +1,5 @@
 'use strict';
-const satellites = require('../config/coordinates_satellites.json');
+const satellites = require('../mocks/info_satellites.json');
 const fs = require('fs');
 var path = require('path');
 
@@ -16,7 +16,7 @@ const setDataSatellite = function(satellite){
   satellites[satellite.name].distance = satellite.distance
   satellites[satellite.name].message = satellite.message
   var json = JSON.stringify(satellites, null, 2);
-  var jsonPath = path.join(__dirname,'../config/coordinates_satellites.json');
+  var jsonPath = path.join(__dirname,'../mocks/info_satellites.json');
   fs.writeFile(jsonPath, json, function (err) {
     if (err) throw err;
     console.log('Saved!');
