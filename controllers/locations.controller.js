@@ -21,7 +21,7 @@ const findCoordinateEmisor = () => {
       let solution1 = solvedCuadraticSistem(functions[0],functions[1])
       let solution2 = solvedCuadraticSistem(functions[0],functions[2])
       let coordinate = calculateCoordinates(solution1,solution2)
-      return {'x': coordinate[0], 'y': coordinate[1]}
+      return {'x': parseFloat(math.evaluate(coordinate[0]).toFixed(1)), 'y': parseFloat(math.evaluate(coordinate[1]).toFixed(1))}
     } else{
       const error = {
         'status':404, 
