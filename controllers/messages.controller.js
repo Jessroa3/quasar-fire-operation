@@ -1,7 +1,12 @@
 
 const satellitesService = require('../services/satellites.service');
 
-const DecryptMessage = function(){
+/**
+ * allows decrypting the message sent by the sender to the satellites, 
+ * complementing the missing phrases on one satellite with the message sent to another
+ * @returns array with decrypted message
+ */
+const DecryptMessage = () =>{
   try{
     let satellites = satellitesService.getAll()
     let messages = []
@@ -20,7 +25,12 @@ const DecryptMessage = function(){
   }
 }
 
-const GetMessage = function(messages){
+/**
+ * allows to obtain the message sent from the sender to the decrypted satellites
+ * @param {[]} messages sender message in string array
+ * @returns message from the decrypted sender if it cannot be decrypted returns error 404
+ */
+const GetMessage = (messages) =>{
   try{
     if(messages.some((element) => { return element === '' || element === undefined})){
       const error = {

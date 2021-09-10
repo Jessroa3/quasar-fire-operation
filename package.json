@@ -1,11 +1,10 @@
 {
   "name": "quasar",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www",
-    "dev:https": "nodemon ./bin/www --key sslcert/server.key --cert sslcert/server.cert"
+    "dev": "nodemon ./bin/www"
   },
   "dependencies": {
     "algebra.js": "^0.2.6",
@@ -15,7 +14,6 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
-    "lodash-contrib": "^4.1200.1",
     "mathjs": "^9.4.4",
     "morgan": "~1.9.1",
     "opn": "^6.0.0"

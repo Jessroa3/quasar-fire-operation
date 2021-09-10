@@ -3,16 +3,29 @@ const satellites = require('../mocks/info_satellites.json');
 const fs = require('fs');
 var path = require('path');
 
-
-const get = function(name){
+/**
+ * allows to obtain the information of a satellite from its name
+ * @param {string} name satellite name
+ * @returns json with the registered satellite information
+ */
+const get = (name) => {
     return satellites[name]
 }
 
-const getAll = function(){
+/**
+ * allows to obtain the information of all the satellites
+ * @returns json with the registered satellite information
+ */
+const getAll = () =>{
     return satellites;
 }
 
-const setDataSatellite = function(satellite){
+/**
+ * allows to record the distance and message data of a satellite
+ * @param {*} satellite object with distance and message from a satellite
+ */
+
+const setDataSatellite = (satellite) => {
   satellites[satellite.name].distance = satellite.distance
   satellites[satellite.name].message = satellite.message
   var json = JSON.stringify(satellites, null, 2);

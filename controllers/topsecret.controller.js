@@ -2,8 +2,12 @@ const locationsController = require('./locations.controller');
 const messagesController = require('./messages.controller');
 const satellitesService = require('../services/satellites.service');
 
-
-const topSecret = function(req, res){
+/**
+ * controller to obtain the coordinates and message from the transmitter with input of distance data and message sent to a group of satellites
+ * @param {*} req 
+ * @param {*} res 
+ */
+const decryptMessageAndCoordinatesBySatelliteGroup = (req, res) => {
   try{
     let dataInputSatellites = req.body.satellites
     for(let dataInputSatellite of dataInputSatellites){
@@ -20,9 +24,13 @@ const topSecret = function(req, res){
   }
       
 }
+/**
+ * controller to get the coordinates and message from the transmitter with input of distance data and message sent to a satellite
+ * @param {*} req 
+ * @param {*} res 
+ */
 
-
-const topSecretBySatellite = function(req, res){
+const decryptMessageAndCoordinatesBySatellite = (req, res) => {
   try{
     let satelliteName = req.params.satellite_name
     if(!satellitesService.get(satelliteName))
@@ -43,7 +51,13 @@ const topSecretBySatellite = function(req, res){
   }
 }
 
-const getTopSecretBySatellite = function(req, res){
+/**
+ * controller to obtain the coordinates and message of the sender by consulting a satellite
+ * @param {*} req 
+ * @param {*} res 
+ */
+
+const getTopSecretBySatellite = (req, res) =>{
   try{
     let satelliteName = req.params.satellite_name
     if(!satellitesService.get(satelliteName))
@@ -60,7 +74,12 @@ const getTopSecretBySatellite = function(req, res){
   }
 }
 
-const validateFormatAndDataInput = function(satellite){
+/**
+ * allows validating that the input data comply with the established format
+ * @param {*} satellite object with satellite data
+ * @returns error if the fields are not valid
+ */
+ const validateFormatAndDataInput = (satellite) => {
   let satelliteName = satellite.name
   if(!satellite.name || !satellite.distance || !satellite.message){
     throw new Error('Missing info')
@@ -71,10 +90,14 @@ const validateFormatAndDataInput = function(satellite){
   if(!satellitesService.get(satelliteName))
     throw new Error('Not found satellite ' + satelliteName)
   return true
-
 }
 
-const handleError = function(err){
+/**
+ * lets handle errors
+ * @param {*} err 
+ * @returns 
+ */
+ const handleError = (err) => {
   console.log("err")
   console.log(err)
   let errorResponse = {
@@ -90,7 +113,7 @@ const handleError = function(err){
 }
 
 module.exports = {
-    topSecret,
-    topSecretBySatellite,
+    decryptMessageAndCoordinatesBySatelliteGroup,
+    decryptMessageAndCoordinatesBySatellite,
     getTopSecretBySatellite
 };
