@@ -1,5 +1,5 @@
 {
-    "port": "8080",
+    "port": "80",
       "https": {
         "key": "../sslcert/server.key",
         "cert": "../sslcert/server.cert"
